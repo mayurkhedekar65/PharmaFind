@@ -1,0 +1,194 @@
+/* General Page Styles */
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(180deg, #f2f6ff 0%, #d9e8ff 100%);
+    margin: 0;
+    padding: 20px;
+    color: #1a1a1a;
+}
+
+/* Header Styles */
+header {
+    max-width: 1200px;
+    margin: 20px auto 40px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #0d47a1;
+    margin-bottom: 5px;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Main Content */
+main {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Pharmacy Card Styles */
+.pharmacy-card {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pharmacy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* Medicine Info Section */
+.medicine-info {
+    background: #f7f9fc;
+    padding: 30px;
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.medicine-info img {
+    max-width: 150px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.medicine-info h2 {
+    font-size: 1.5rem;
+    color: #0d47a1;
+    margin: 0 0 5px 0;
+}
+
+.medicine-info .manufacturer {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+/* Pharmacy Details Section */
+.pharmacy-details {
+    padding: 30px;
+    flex: 2 1 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pharmacy-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.pharmacy-header img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+    object-fit: cover;
+    border: 3px solid #e0eaff;
+}
+
+.pharmacy-header h3 {
+    font-size: 1.4rem;
+    margin: 0;
+    color: #1a237e;
+}
+
+.pharmacy-header .distance {
+    font-size: 1rem;
+    color: #ff6f61;
+    font-weight: 600;
+}
+
+.pharmacy-details .address {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: auto;
+    padding-bottom: 20px;
+}
+
+.price-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0eaff;
+}
+
+.price-section .price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0d47a1;
+}
+
+.price-section .add-to-cart-btn {
+    padding: 14px 28px;
+    font-size: 1rem;
+    background: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.price-section .add-to-cart-btn:hover {
+    background: #e55a4e;
+    transform: scale(1.05);
+}
+
+/* No Results Found */
+.no-results {
+    text-align: center;
+    padding: 80px 20px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.no-results h2 {
+    font-size: 2rem;
+    color: #0d47a1;
+}
+
+.no-results p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .pharmacy-card {
+        flex-direction: column;
+    }
+    .medicine-info {
+        border-bottom: 1px solid #e0eaff;
+    }
+    .price-section {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+        text-align: center;
+    }
+    .price-section .add-to-cart-btn {
+        width: 100%;
+    }
+    header h1 {
+        font-size: 2rem;
+    }
+}

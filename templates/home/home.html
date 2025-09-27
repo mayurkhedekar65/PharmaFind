@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Home - PharmaFind{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section>
+    <h1>PharmaFind - Your Trusted Partner in Healthcare</h1>
+    <p>Search for medicines, lab tests, and doctors near you.</p>
+
+    <!-- Medicine Search Form -->
+    <form action="{% url 'search' %}" method="get">
+        <input type="text" name="q" placeholder="Search medicines, doctors, or tests" required>
+        <input type="hidden" id="lat" name="lat">
+        <input type="hidden" id="lng" name="lng">
+        <button type="submit">Search</button>
+    </form>
+</section>
+
+<!-- Key Services -->
+<section>
+    <h2>Our Services</h2>
+    <ul>
+        <li>💊 Order Medicines Online</li>
+        <li>🧪 Book Lab Tests at Home</li>
+        <li>👨‍⚕️ Consult Doctors Online</li>
+        <li>🛒 Explore Health Products</li>
+    </ul>
+</section>
+
+<!-- Featured Categories -->
+<section>
+    <h2>Featured Categories</h2>
+    <ul>
+        <li>OTC Medicines</li>
+        <li>Vitamins & Supplements</li>
+        <li>Personal Care</li>
+        <li>Baby Care</li>
+        <li>Home Care</li>
+    </ul>
+</section>
+
+<!-- Request Medicine Section -->
+<section>
+    <h2>Can't find your medicine?</h2>
+    <!-- Use "#" as placeholder URL until backend is ready -->
+    <form method="post" action="#">
+        {% csrf_token %}
+        <input type="hidden" id="rlat" name="lat">
+        <input type="hidden" id="rlng" name="lng">
+        <input type="text" name="q" placeholder="Enter medicine name & strength" required>
+        <button type="submit">Request Medicine</button>
+    </form>
+</section>
+
+<!-- Geolocation Script -->
+<script>
+navigator.geolocation?.getCurrentPosition(p=>{
+    document.getElementById('lat').value = p.coords.latitude;
+    document.getElementById('lng').value = p.coords.longitude;
+    document.getElementById('rlat').value = p.coords.latitude;
+    document.getElementById('rlng').value = p.coords.longitude;
+});
+</script>
+
+{% endblock %}

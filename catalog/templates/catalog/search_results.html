@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+<main>
+    <h2>Search Results for "{{ query }}"</h2>
+
+    {% if results %}
+        <p>Showing pharmacies sorted by nearest to your location.</p>
+        <ul>
+            {% for pharmacy, distance in results %}
+                <li>
+                    <strong>{{ pharmacy.name }}</strong> - {{ pharmacy.address }}
+                    <br>
+                    <em>Distance: {{ distance|floatformat:2 }} km away</em>
+                </li>
+            {% empty %}
+                <li>No pharmacies found matching your search.</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found for your search.</p>
+    {% endif %}
+</main>
+{% endblock %}

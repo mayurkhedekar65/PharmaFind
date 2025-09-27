@@ -1,0 +1,35 @@
+{% load static %}
+<nav class="pf-nav">
+  <!-- Left / Brand -->
+  <a class="pf-brand" href="{% url 'home' %}">
+    <img src="{% static 'images/logo.svg' %}" alt="PharmaFind" class="pf-logo">
+    <span class="pf-wordmark">Pharma<span>Find</span></span>
+  </a>
+
+  <!-- Center / Primary links -->
+  <ul class="pf-links">
+    <li><a href="#">Medicine</a></li>
+    <li><a href="#">Pharmacies Nearby</a></li>
+    <li class="has-dot"><a href="#">Healthcare</a></li>
+    <li><a href="#">Doctors</a></li>
+    <li><a href="#">PLUS</a></li>
+    <li><a href="#" class="text-accent">Offers</a></li>
+  </ul>
+
+  <!-- Right / Actions -->
+  <div class="pf-actions">
+    {% if user.is_authenticated %}
+      <span class="pf-btn pf-btn-ghost">👋 Hello, {{ user.username }}</span>
+      <a href="{% url 'logout' %}" class="pf-icon-link">🚪 <span>Logout</span></a>
+    {% else %}
+      <a href="{% url 'login' %}" class="pf-btn pf-btn-ghost">Hello, Log in</a>
+    {% endif %}
+    <a href="#" class="pf-icon-link">🎁 <span>Offers</span></a>
+    <a href="#" class="pf-icon-link">🛒 <span>Cart</span></a>
+  </div>
+
+  <!-- Mobile menu trigger (pure CSS collapse) -->
+  <button class="pf-burger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>

@@ -1,0 +1,131 @@
+/* main.css - Modern & Catchy Theme */
+
+/* Theme Colors */
+:root {
+  --pf-teal: #00bfa6;
+  --pf-teal-dark: #007d6e;
+  --pf-mint: #e9fbf6;
+  --pf-ink: #1e2a2f;
+  --pf-muted: #5a6a70;
+  --pf-accent: #ff6f61;
+  --pf-card: #ffffff;
+  --pf-glass: rgba(255, 255, 255, 0.9);
+  --pf-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Reset & Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.45;
+  color: var(--pf-ink);
+  background:
+    radial-gradient(1200px 600px at 80% -50%, #ffe9d6 0%, transparent 60%),
+    radial-gradient(900px 500px at -10% 0%, var(--pf-mint) 0%, transparent 60%),
+    #f7faf9;
+}
+
+/* Body Wrapper */
+body.app-body {
+  margin: 0;
+  min-height: 100%;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* Page Container */
+.page-wrap {
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 20px 60px;
+}
+
+/* Card */
+.card {
+  background-color: var(--pf-card);
+  border-radius: 12px;
+  box-shadow: var(--pf-shadow);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+button.primary {
+  background-color: var(--pf-teal);
+  color: #fff;
+}
+
+button.primary:hover {
+  background-color: var(--pf-teal-dark);
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: var(--pf-teal-dark);
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--pf-teal);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
+  color: var(--pf-ink);
+}
+
+/* Utilities */
+.text-center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-wrap {
+    padding: 0 15px 40px;
+  }
+  .card {
+    padding: 15px;
+  }
+}

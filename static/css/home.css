@@ -1,0 +1,187 @@
+/* home.css - Modern & Catchy Theme */
+
+/* General Page Styles */
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(180deg, #f2f6ff 0%, #d9e8ff 100%);
+    margin: 0;
+    padding: 0;
+    color: #1a1a1a;
+}
+
+h1, h2 {
+    color: #0d47a1; /* Deep blue headings */
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+section {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: auto;
+    border-radius: 15px;
+}
+
+/* Hero Section */
+section:first-of-type {
+    background: linear-gradient(135deg, #42a5f5, #478ed1);
+    color: #ffffff;
+    text-align: center;
+    padding: 100px 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+section:first-of-type h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+section:first-of-type p {
+    font-size: 1.3rem;
+    margin-bottom: 35px;
+    font-weight: 500;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+form input[type="text"] {
+    padding: 14px 20px;
+    font-size: 1rem;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 320px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(8px);
+}
+
+form input[type="text"]:focus {
+    outline: none;
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+form button {
+    padding: 14px 28px;
+    font-size: 1rem;
+    background: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+}
+
+form button:hover {
+    background: #e55a4e;
+    transform: scale(1.05);
+}
+
+/* Services Section */
+section:nth-of-type(2) ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+}
+
+section:nth-of-type(2) li {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+    flex: 1 1 220px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    font-weight: 600;
+    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(6px);
+}
+
+section:nth-of-type(2) li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* Featured Categories Section */
+section:nth-of-type(3) ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+}
+
+section:nth-of-type(3) li {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 18px 25px;
+    flex: 1 1 180px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+    font-weight: 500;
+    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(6px);
+}
+
+section:nth-of-type(3) li:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* Request Medicine Section */
+section:nth-of-type(4) {
+    background: linear-gradient(135deg, #81d4fa, #29b6f6);
+    border-radius: 20px;
+    text-align: center;
+    padding: 60px 20px;
+    color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+section:nth-of-type(4) form {
+    justify-content: center;
+    margin-top: 25px;
+}
+
+section:nth-of-type(4) input[type="text"] {
+    width: 350px;
+    border-radius: 50px;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(8px);
+}
+
+section:nth-of-type(4) button {
+    background: #ffca28;
+    color: #1a1a1a;
+    border-radius: 50px;
+}
+
+section:nth-of-type(4) button:hover {
+    background: #ffc107;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    section:nth-of-type(2) ul,
+    section:nth-of-type(3) ul {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    form input[type="text"] {
+        width: 100%;
+    }
+}
