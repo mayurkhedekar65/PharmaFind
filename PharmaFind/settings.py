@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
-    'pharmacies',
+    # 'pharmacies',
     'catalog',
     'requestapp',
     'availability',

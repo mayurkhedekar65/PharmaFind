@@ -1,7 +1,7 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 
-# Create your views here.
-from django.http import JsonResponse
-from django.contrib.gis.geos import Point
-from django.contrib.gis.db.models.functions import Distance
-from . models import PharmacyDetails
+# # Create your views here.
+# from django.http import JsonResponse
+# from django.contrib.gis.geos import Point
+# from django.contrib.gis.db.models.functions import Distance
+# from users.models import PharmacyDetails
