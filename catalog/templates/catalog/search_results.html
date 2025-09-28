@@ -1,27 +1,26 @@
 {% extends "base.html" %}
-{% load static %}
-
-{% block title %}Search Results{% endblock %}
 
 {% block content %}
-<main>
     <h2>Search Results for "{{ query }}"</h2>
 
-    {% if results %}
-        <p>Showing pharmacies sorted by nearest to your location.</p>
-        <ul>
-            {% for pharmacy, distance in results %}
-                <li>
-                    <strong>{{ pharmacy.name }}</strong> - {{ pharmacy.address }}
-                    <br>
-                    <em>Distance: {{ distance|floatformat:2 }} km away</em>
-                </li>
-            {% empty %}
-                <li>No pharmacies found matching your search.</li>
-            {% endfor %}
-        </ul>
+    {% if location_error %}
+        <p style="color: red;"><strong>Could not detect your location.</strong> Showing results without distance sorting.</p>
     {% else %}
-        <p>No results found for your search.</p>
+        <p>Showing pharmacies sorted by nearest to your location.</p>
     {% endif %}
-</main>
+
+    <ul>
+        {% for item in results %}
+            <li>
+                <strong>Medicine:</strong> {{ item.medicine.name }} at {{ item.pharmacy.name }}<br>
+                <strong>Address:</strong> {{ item.pharmacy.address }}<br>
+                <strong>Price:</strong> ₹{{ item.price }}<br>
+                {% if item.distance is not None %}
+                    <strong>Distance:</strong> {{ item.distance|floatformat:2 }} km away
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>No pharmacies found matching your search.</li>
+        {% endfor %}
+    </ul>
 {% endblock %}

@@ -26,7 +26,7 @@ class MedicineDetails(models.Model):
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE, blank = False, null = False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, blank = False, null = False)
     price = models.DecimalField(max_digits=10, decimal_places=2, blank = False, null = False)
-    dosage_form = models.CharField(max_length=50, blank=False , null=False )  # e.g., 'Tablet', 'Syrup', 'Injection'
+    dosage_form = models.CharField(max_length=50, blank=True , null=True )  # e.g., 'Tablet', 'Syrup', 'Injection'
     strength = models.CharField(max_length=50, blank=False, null=False)  # e.g., '500 mg', '10 mg/5 ml'
 
     def __str__(self):

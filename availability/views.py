@@ -1,13 +1,13 @@
 # availability/views.py
 
 from django.shortcuts import render
-from pharmacies.models import PharmacyDetails as Pharmacy
-from .utils import haversine  # <-- Import our new function
+from .models import Availability
+from .utils import haversine
 
 def search_view(request):
     query = request.GET.get('q', '')
     
-    # Get user's location from URL, default to 0.0 if not provided
+    # Correctly get lat/lng from the URL query parameters sent by the form.
     try:
         user_lat = float(request.GET.get('lat', '0.0'))
         user_lon = float(request.GET.get('lng', '0.0'))
@@ -15,23 +15,44 @@ def search_view(request):
         user_lat, user_lon = 0.0, 0.0
 
     results = []
+    location_error = False
 
-    if query and user_lat and user_lon:
-        # 1. Filter pharmacies by name
-        pharmacies = Pharmacy.objects.filter(name__icontains=query)
+    # Check if the location is the default (0.0, 0.0), which means it wasn't provided.
+    if user_lat == 0.0 and user_lon == 0.0:
+        location_error = True
 
-        # 2. Calculate distance for each pharmacy and store as a tuple (pharmacy, distance)
-        pharmacies_with_distance = []
-        for p in pharmacies:
-            distance = haversine(user_lat, user_lon, p.latitude, p.longitude)
-            pharmacies_with_distance.append((p, distance))
+    if query:
+        availabilities = Availability.objects.select_related('pharmacy', 'medicine').filter(
+            medicine__name__icontains=query,
+            stock_quantity__gt=0
+        )
 
-        # 3. Sort the list of tuples by distance (the second item in the tuple)
-        results = sorted(pharmacies_with_distance, key=lambda item: item[1])
+        results_with_distance = []
+        for item in availabilities:
+            # Only calculate distance if we have a valid user location
+            if not location_error and item.pharmacy and item.pharmacy.latitude is not None and item.pharmacy.longitude is not None:
+                distance = haversine(
+                    user_lat,
+                    user_lon,
+                    item.pharmacy.latitude,
+                    item.pharmacy.longitude
+                )
+                item.distance = distance
+            else:
+                item.distance = None # Set distance to None if no location
+            
+            results_with_distance.append(item)
+
+        # Sort by distance only if we have a valid location
+        if not location_error:
+            # Filter out items that couldn't have a distance calculated
+            results_with_distance = [item for item in results_with_distance if item.distance is not None]
+            results = sorted(results_with_distance, key=lambda item: item.distance)
+        else:
+            results = results_with_distance # Show results unsorted
 
     return render(request, 'catalog/search_results.html', {
         'results': results,
         'query': query,
-        'user_lat': user_lat, # Pass user's lat/lon to template
-        'user_lon': user_lon,
+        'location_error': location_error,
     })

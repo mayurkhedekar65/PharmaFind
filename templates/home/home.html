@@ -56,12 +56,19 @@
 
 <!-- Geolocation Script -->
 <script>
-navigator.geolocation?.getCurrentPosition(p=>{
-    document.getElementById('lat').value = p.coords.latitude;
-    document.getElementById('lng').value = p.coords.longitude;
-    document.getElementById('rlat').value = p.coords.latitude;
-    document.getElementById('rlng').value = p.coords.longitude;
-});
+if (navigator.geolocation) {
+    // Corrected method name from getcurrentPosition to getCurrentPosition
+    navigator.geolocation.getCurrentPosition(position => {
+        // Find all the latitude and longitude fields and set their value.
+        document.getElementById('lat').value = position.coords.latitude;
+        document.getElementById('lng').value = position.coords.longitude;
+        document.getElementById('rlat').value = position.coords.latitude;
+        document.getElementById('rlng').value = position.coords.longitude;
+    }, error => {
+        // Optional: Handle cases where the user denies location access.
+        console.error("Geolocation error: ", error.message);
+    });
+}
 </script>
 
 {% endblock %}

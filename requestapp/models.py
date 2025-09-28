@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from pharmacies.models import PharmacyDetails
+from users.models import PharmacyDetails
 # Create your models here.
 
 class MedicineRequest(models.Model):
@@ -13,5 +13,5 @@ class MedicineRequest(models.Model):
     medicine_name = models.CharField(max_length=255)  
     medicine = models.ForeignKey('catalog.MedicineDetails', null=True, blank=True, on_delete=models.SET_NULL) 
     status = models.CharField(max_length = 20, choices=Status.choices, default=Status.PENDING)
-    pharmacy = models.ForeignKey('pharmacies.PharmacyDetails',null=True , blank=True , on_delete=models.SET_NULL,)
+    pharmacy = models.ForeignKey('users.PharmacyDetails',null=True , blank=True , on_delete=models.SET_NULL,)
     created_at = models.DateTimeField(auto_now_add = True)
